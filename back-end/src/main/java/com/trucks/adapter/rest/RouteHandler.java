@@ -16,10 +16,10 @@ import java.util.Map;
 import java.util.Random;
 
 import org.springframework.web.bind.annotation.RequestParam;
-import com.trucks.adapter.rest.exception.MyBadRequestException;
 import com.trucks.application.port.RouteService;
 import com.trucks.domain.Route;
 import com.trucks.utils.PortsUtils;
+import es.ull.utils.rest.exception.UllBadRequestException;
 
 @CrossOrigin(origins = "*")
 @RequestMapping(
@@ -50,12 +50,12 @@ public class RouteHandler {
         logger.info("\tdestinationPort=" + destinationPort);
         if (arrivalTime == null) {
             logger.error("Arrival time not provided");
-            throw new MyBadRequestException().setMessage("Arrival time not provided");
+            throw new UllBadRequestException().setMessage("Arrival time not provided");
         }
         boolean valid2 = PortsUtils.isIsoDate(arrivalTime);
         if (!valid2) {
             logger.error("Arrival time not valid");
-            throw new MyBadRequestException().setMessage("Arrival time not valid");
+            throw new UllBadRequestException().setMessage("Arrival time not valid");
         }
         //
         Random r = new Random();

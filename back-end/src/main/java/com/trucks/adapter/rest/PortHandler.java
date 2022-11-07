@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 import java.util.Optional;
-import com.trucks.adapter.rest.exception.MyBadRequestException;
-import com.trucks.adapter.rest.exception.MyNotFoundException;
 import com.trucks.application.port.PortService;
 import com.trucks.domain.Port;
 import com.trucks.utils.PortsUtils;
+import es.ull.utils.rest.exception.UllBadRequestException;
+import es.ull.utils.rest.exception.UllNotFoundException;
 
 @CrossOrigin(origins = "*")
 @RequestMapping(
@@ -61,12 +61,12 @@ public class PortHandler {
                     return ResponseEntity.ok().body(mappedResource);
                 } else {
                     logger.error("Arrival time not valid");
-                    throw new MyBadRequestException().setMessage("Arrival time not valid");
+                    throw new UllBadRequestException().setMessage("Arrival time not valid");
                 }
             }
             return ResponseEntity.ok().body(port);
         } else {
-            throw new MyNotFoundException();
+            throw new UllNotFoundException();
         }
     }
 }

@@ -13,9 +13,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.trucks.adapter.rest.exception.MyBadRequestException;
 import com.trucks.application.port.BookingService;
 import com.trucks.domain.Booking;
+import es.ull.utils.rest.exception.UllBadRequestException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
@@ -53,7 +53,7 @@ public class BookingHandler {
             return ResponseEntity.ok().body(booking.toJson());
         } else {
             logger.error("Arrival time not valid");
-            throw new MyBadRequestException().setMessage("Arrival time not valid");
+            throw new UllBadRequestException().setMessage("Arrival time not valid");
         }
     }
 
