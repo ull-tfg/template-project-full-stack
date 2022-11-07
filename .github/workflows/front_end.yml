@@ -1,0 +1,32 @@
+name: docker_image_front_end_ci
+
+# Trigger pushes on front-end directory
+on:
+  push:
+    branches: 
+      - main
+    paths: 
+      - front-end/**
+
+# Run jobs on front-end directory
+defaults:
+  run:
+    working-directory: front-end
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+      - name: Build and push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: kaizten/trucks-front-end
+          tags: latest
+          registry: docker.io
+          directory: front-end
+          dockerfile: front-end/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          buildArgs: GITHUB_TOKEN=${{ secrets.KAIZTEN_DEVELOPMENT_PASSWORD }}

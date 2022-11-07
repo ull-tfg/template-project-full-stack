@@ -1,0 +1,47 @@
+name: docker_image_back_end_ci
+
+# Trigger pushes on 'back-end' directory
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - back-end/**
+
+# Run jobs on back-end directory
+defaults:
+  run:
+    working-directory: back-end
+
+jobs:
+  path-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.2
+      - name: Get user
+        run: echo 'The username is' ${{ github.actor }}
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+          server-id: github
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+      - name: Print settings
+        run: cat /home/runner/.m2/settings.xml
+      - name: Build with Maven
+        run: mvn -B -Pgithub clean package --file pom.xml
+        env:
+          MAVEN_USERNAME: ${{ secrets.KAIZTEN_DEVELOPMENT_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.KAIZTEN_DEVELOPMENT_PASSWORD }}
+      - name: Build and push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: kaizten/trucks-back-end
+          tags: latest
+          registry: docker.io
+          directory: back-end
+          dockerfile: back-end/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}

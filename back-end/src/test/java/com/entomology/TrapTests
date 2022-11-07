@@ -1,0 +1,167 @@
+package com.entomology;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.ArrayList;
+
+import com.entomology.domain.Trap;
+import com.entomology.controller.TrapHandler;
+import com.entomology.domain.Image;
+import com.entomology.domain.Island;
+import com.entomology.domain.TrapType;
+import com.entomology.json.JsonTrap;
+import com.entomology.repository.TrapRepository;
+import com.entomology.service.ImageService;
+import com.entomology.service.SamplingService;
+import com.entomology.utils.EntomologyUtils;
+import com.entomology.validator.TrapValidator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kaizten.utils.rest.error.ApiError;
+import com.kaizten.utils.rest.pagination.KaiztenPagination;
+import com.kaizten.utils.string.KaiztenString;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.hasSize;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.hamcrest.CoreMatchers.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+class TrapTests {
+
+    @Autowired
+    private MockMvc mockMvc;
+    @Autowired
+    private ObjectMapper mapper;
+    @MockBean
+    private TrapRepository trapRepository;
+    @MockBean
+    private ImageService imageService;
+    @MockBean
+    private SamplingService SamplingService;
+    private final String BASE_URL = TrapHandler.ENDPOINT + "/";
+    //
+    private List<String> TRAP_1_IMAGES = Arrays.asList("731309f6997968599d9778ac");
+    Trap TRAP_1 = new Trap("624309f6987958599d9778ac", "Prueba1", "prueba1modi",
+            new GeoJsonPoint(5F, 4F), Island.TENERIFE, TrapType.OVITRAP, TRAP_1_IMAGES);
+    private Image MOCKED_IMAGE = new Image("Mocking Image"); // When I want to mock an image to be present
+    private Trap TRAP_2 = new Trap("624309f6987958599d9778bc", "Prueba2", "prueba2modi",
+            new GeoJsonPoint(4F, 5F), null, TrapType.BG_SENTINEL,
+            Arrays.asList("531317f6997968599d9778ac", "131305f6997968599d9779ac"));
+
+    /*
+     * @Test
+     * void post_multipleErrors() throws Exception {
+     * Trap modified = (Trap) TRAP_1.clone();
+     * modified.setName("");
+     * modified.setGeolocation(null);
+     * String expectedMessage = TrapValidator.ERROR_NAME_EMPTY + " | " +
+     * TrapValidator.ERROR_NO_GEOLOCATION;
+     * //
+     * Mockito.when(repository.findById(modified.getId())).thenReturn(Optional.of(
+     * modified));
+     * mockMvc.perform(MockMvcRequestBuilders.post(BASE_URL)
+     * .contentType(MediaType.APPLICATION_JSON)
+     * .accept(MediaType.APPLICATION_JSON)
+     * .content(this.mapper.writeValueAsString(modified)))
+     * .andExpect(status().isBadRequest());
+     * // .andExpect(jsonPath("$.message", is(expectedMessage)))
+     * }
+     * 
+     * @Test
+     * public void put_success() throws Exception {
+     * for (String imageId : TRAP_2.getImages()) {
+     * Mockito.when(imageService.findById(imageId)).thenReturn(Optional.of(
+     * MOCKED_IMAGE));
+     * }
+     * Mockito.when(trapRepository.findById(TRAP_2.getId())).thenReturn(Optional.of(
+     * TRAP_2));
+     * mockMvc.perform(MockMvcRequestBuilders.put("/traps/" + TRAP_2.getId())
+     * .contentType(MediaType.APPLICATION_JSON)
+     * .accept(MediaType.APPLICATION_JSON)
+     * .content(this.mapper.writeValueAsString(TRAP_2)))
+     * .andExpect(status().isOk());
+     * }
+     * 
+     * @Test
+     * public void put() throws Exception {
+     * for (String imageId : TRAP_1.getImages()) {
+     * Mockito.when(imageService.findById(imageId)).thenReturn(Optional.of(
+     * MOCKED_IMAGE));
+     * }
+     * Trap modified = (Trap) TRAP_1.clone();
+     * modified.setDescription("newDescription");
+     * modified.setType(TrapType.FARM);
+     * Mockito.when(trapRepository.findById(TRAP_1.getId())).thenReturn(Optional.of(
+     * TRAP_1));
+     * mockMvc.perform(MockMvcRequestBuilders.put(BASE_URL + TRAP_1.getId())
+     * .contentType(MediaType.APPLICATION_JSON)
+     * .accept(MediaType.APPLICATION_JSON)
+     * .content(this.mapper.writeValueAsString(modified)))
+     * .andExpect(status().isOk())
+     * .andExpect(jsonPath("$.id", is(TRAP_1.getId())))
+     * .andExpect(jsonPath("$.name", is(TRAP_1.getName())))
+     * .andExpect(jsonPath("$.description", is(modified.getDescription())))
+     * .andExpect(jsonPath("$.geolocation.coordinates[0]",
+     * is(TRAP_1.getGeolocation().getX())))
+     * .andExpect(jsonPath("$.geolocation.coordinates[1]",
+     * is(TRAP_1.getGeolocation().getY())))
+     * .andExpect(jsonPath("$.type", is(modified.getType().toString())))
+     * .andExpect(jsonPath("$.images", is(TRAP_1_IMAGES)));
+     * }
+     * 
+     * @Test
+     * public void put_incorrect_image_id() throws Exception {
+     * Trap modified = (Trap) TRAP_1.clone();
+     * modified.setImages(Arrays.asList("badid", "anotherBadId"));
+     * Mockito.when(trapRepository.findById(TRAP_1.getId())).thenReturn(Optional.of(
+     * TRAP_1));
+     * mockMvc.perform(MockMvcRequestBuilders.put(BASE_URL + TRAP_1.getId())
+     * .contentType(MediaType.APPLICATION_JSON)
+     * .accept(MediaType.APPLICATION_JSON)
+     * .content(this.mapper.writeValueAsString(modified)))
+     * .andExpect(status().isBadRequest());
+     * }
+     * 
+     * @Test
+     * void put_multipleErrors() throws Exception {
+     * Trap modified = (Trap) TRAP_1.clone();
+     * modified.setName("");
+     * modified.setGeolocation(null);
+     * String expectedMessage = TrapValidator.ERROR_NAME_EMPTY + " | " +
+     * TrapValidator.ERROR_NO_GEOLOCATION;
+     * //
+     * Mockito.when(repository.findById(modified.getId())).thenReturn(Optional.of(
+     * modified));
+     * mockMvc.perform(MockMvcRequestBuilders.put(BASE_URL + modified.getId())
+     * .contentType(MediaType.APPLICATION_JSON)
+     * .accept(MediaType.APPLICATION_JSON)
+     * .content(this.mapper.writeValueAsString(modified)))
+     * .andExpect(status().isBadRequest());
+     * // .andExpect(jsonPath("$.message", is(expectedMessage))); // TODO
+     * }
+     */
+}
