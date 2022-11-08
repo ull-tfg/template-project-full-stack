@@ -15,7 +15,11 @@ DESCRIPTION OF PROJECT
 
 ## How to use
 
-XXX
+The project can be started by executing the following command:
+```sh
+sudo COMPOSE_PROFILES=development docker-compose up
+```
+The back-end will be available at `http://localhost:8080`, while the front-end will be available at `http://localhost:8081`.
 
 ## Links
 
