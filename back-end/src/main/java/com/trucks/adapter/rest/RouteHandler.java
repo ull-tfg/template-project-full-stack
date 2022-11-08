@@ -27,7 +27,7 @@ import es.ull.utils.rest.exception.UllBadRequestException;
     produces = MediaType.APPLICATION_JSON_VALUE
 )
 @RestController
-public class RouteHandler { 
+public class RouteHandler {
 
     public static final String ENDPOINT = "/routes";
     private static final Logger logger = LoggerFactory.getLogger(RouteHandler.class);
