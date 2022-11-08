@@ -1,6 +1,6 @@
 # Back-end
 
-<!-- TOC depthfrom:2 -->
+<!-- TOC -->
 
 - [Back-end](#back-end)
   - [Description](#description)

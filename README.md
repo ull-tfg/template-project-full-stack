@@ -1,6 +1,6 @@
 # Full-stack project
 
-<!-- TOC depthfrom:2 -->
+<!-- TOC -->
 
 - [Full-stack project](#full-stack-project)
   - [Description](#description)

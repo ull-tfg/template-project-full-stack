@@ -1,6 +1,6 @@
 # Front-end
 
-<!-- TOC depthfrom:2 -->
+<!-- TOC -->
 
 - [Front-end](#front-end)
   - [Description](#description)
