@@ -5,6 +5,9 @@
 - [Front-end](#front-end)
   - [Description](#description)
   - [How to use](#how-to-use)
+  - [Project setup](#project-setup)
+    - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
+    - [Compiles and minifies for production](#compiles-and-minifies-for-production)
   - [Links](#links)
 
 <!-- /TOC -->
@@ -14,6 +17,21 @@
 DESCRIPTION OF FRONT-END
 
 ## How to use
+
+## Project setup
+
+```
+# yarn
+yarn
+
+# npm
+npm install
+
+# pnpm
+pnpm install
+```
+
+### Compiles and hot-reloads for development
 
 The Vite development server can be started by running the following commands:
 ```sh
@@ -27,6 +45,19 @@ The result must be similar to this:
   ➜  Network: use --host to expose
 ```
 The front-end should be available by accesing to `http://localhost:3000/`.
+
+### Compiles and minifies for production
+
+```
+# yarn
+yarn build
+
+# npm
+npm run build
+
+# pnpm
+pnpm build
+```
 
 ## Links
 
