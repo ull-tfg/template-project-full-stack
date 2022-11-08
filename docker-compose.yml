@@ -1,0 +1,57 @@
+# Run:
+#    - Profile: development
+#          sudo COMPOSE_PROFILES=development docker-compose up
+#    - Profile: production
+#          sudo COMPOSE_PROFILES=production docker-compose up
+#    Ports:
+#        - Front-end:  8081
+#        - Back-end:   8080
+#        - MongoDB:   27017
+# Stop:
+#    docker-compose down
+version: '3.7'
+
+services:
+
+  # Back-end. Profiles: "production"
+  back-end-prod:
+    image: ullsoftware/back-end:latest
+    container_name: tourism-back-end-prod
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://alu3344:alu3344@cluster-tourism.h0tu9.mongodb.net/Tourism-Database?retryWrites=true&w=majority
+      - spring_profiles_active=production
+    profiles: ["production"]
+
+  # Back-end. Profiles: "development"
+  back-end-dev:
+    image: ullsoftware/back-end:latest
+    container_name: tourism-back-end-dev
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/tourism
+      - spring_profiles_active=development
+    profiles: ["development"]
+    depends_on:
+      - mongodb
+
+  # Front-end. Profiles: "development" and "production"
+  front-end:
+    image: ullsoftware/front-end:latest
+    container_name: front-end
+    ports:
+      - "8081:80"
+    profiles: ["development", "production"]
+    
+  # MongoDB. Profiles: "development"
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    command: mongod --port 27017
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/data/db"
+    profiles: ["development"]
