@@ -1,6 +1,6 @@
-name: docker_image_front_end_ci
+name: front-end-publish-docker-image
 
-# Trigger pushes on front-end directory
+# Action triggered when pushing 'front-end' directory in 'main' branch
 on:
   push:
     branches: 
@@ -13,16 +13,22 @@ defaults:
   run:
     working-directory: front-end
 
+# Environment variables
+env:
+  DOCKER_IMAGE_NAME: ullsoftware/front-end
+
 jobs:
-  publish:
+  publish-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # Checkout of the repository
+      - uses: actions/checkout@v3
         name: Check out code
+      # Build and publish Docker image in DockerHub
       - name: Build and push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: kaizten/trucks-front-end
+          image: ${{ env.DOCKER_IMAGE_NAME }}
           tags: latest
           registry: docker.io
           directory: front-end
