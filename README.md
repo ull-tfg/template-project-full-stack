@@ -23,4 +23,4 @@ The back-end will be available at `http://localhost:8080`, while the front-end w
 
 ## Links
 
-LINKS USED IN THE COMPONENT
+LINKS USED IN THE PROJECT
