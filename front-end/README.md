@@ -2,21 +2,18 @@
 
 <!-- TOC -->
 
-- [Front-end](#front-end)
-- [Description](#description)
-- [How to use](#how-to-use)
-  - [Project Setup](#project-setup)
-    - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
-    - [Type-Check, Compile and Minify for Production](#type-check-compile-and-minify-for-production)
-    - [Run Unit Tests with Vitest](#run-unit-tests-with-vitest)
-    - [Run End-to-End Tests with Cypress](#run-end-to-end-tests-with-cypress)
-    - [Lint with ESLint](#lint-with-eslint)
+- [Project Setup](#project-setup)
+  - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
+  - [Type-Check, Compile and Minify for Production](#type-check-compile-and-minify-for-production)
+  - [Run Unit Tests with Vitest](#run-unit-tests-with-vitest)
+  - [Run End-to-End Tests with Cypress](#run-end-to-end-tests-with-cypress)
+  - [Lint with ESLint](#lint-with-eslint)
 
 <!-- /TOC -->
 
 # Description
 
-This template should help get you started developing with Vue 3 in Vite. It has been created by following the guidelines provided [here]():
+This template should help get you started developing with Vue 3 in Vite. It has been created by following the guidelines provided [here](https://vuejs.org/guide/quick-start.html#creating-a-vue-application):
 ```sh
 npm init vue@latest
 Need to install the following packages:
