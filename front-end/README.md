@@ -3,62 +3,110 @@
 <!-- TOC -->
 
 - [Front-end](#front-end)
-  - [Description](#description)
-  - [How to use](#how-to-use)
-  - [Project setup](#project-setup)
-    - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
-    - [Compiles and minifies for production](#compiles-and-minifies-for-production)
-  - [Links](#links)
+- [Description](#description)
+- [How to use](#how-to-use)
+  - [Project Setup](#project-setup)
+    - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
+    - [Type-Check, Compile and Minify for Production](#type-check-compile-and-minify-for-production)
+    - [Run Unit Tests with Vitest](#run-unit-tests-with-vitest)
+    - [Run End-to-End Tests with Cypress](#run-end-to-end-tests-with-cypress)
+    - [Lint with ESLint](#lint-with-eslint)
 
 <!-- /TOC -->
 
-## Description
+# Description
 
-DESCRIPTION OF FRONT-END
+This template should help get you started developing with Vue 3 in Vite. It has been created by following the guidelines provided [here]():
+```sh
+npm init vue@latest
+Need to install the following packages:
+  create-vue@3.4.0
+Ok to proceed? (y) 
 
-## How to use
+Vue.js - The Progressive JavaScript Framework
 
-## Project setup
+✔ Project name: … front-end
+✔ Add TypeScript? … No / Yes
+✔ Add JSX Support? … No / Yes
+✔ Add Vue Router for Single Page Application development? … No / Yes
+✔ Add Pinia for state management? … No / Yes
+✔ Add Vitest for Unit Testing? … No / Yes
+✔ Add an End-to-End Testing Solution? › Cypress
+✔ Add ESLint for code quality? … No / Yes
+✔ Add Prettier for code formatting? … No / Yes
 
+Scaffolding project in /ull-tfg/template-project-full-stack/front-end...
+
+Done. Now run:
+
+  cd front-end
+  npm install
+  npm run lint
+  npm run dev
 ```
-# yarn
-yarn
 
-# npm
+# How to use
+
+## Project Setup
+
+```sh
 npm install
+```
+The results must be similar to this:
+```sh
+added 571 packages, and audited 572 packages in 49s
 
-# pnpm
-pnpm install
+115 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
 ```
 
-### Compiles and hot-reloads for development
+### Compile and Hot-Reload for Development
 
 The Vite development server can be started by running the following commands:
 ```sh
-yarn dev
+npm run dev
 ```
 The result must be similar to this:
 ```sh
-  VITE v3.2.3  ready in 332 ms
+  VITE v3.2.3  ready in 506 ms
 
-  ➜  Local:   http://localhost:3000/
+  ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
 ```
-The front-end should be available by accesing to `http://localhost:3000/`.
+The front-end should be available by accesing to `http://localhost:5173/`.
 
-### Compiles and minifies for production
+### Type-Check, Compile and Minify for Production
 
-```
-# yarn
-yarn build
-
-# npm
+```sh
 npm run build
-
-# pnpm
-pnpm build
 ```
 
-## Links
+### Run Unit Tests with [Vitest](https://vitest.dev/)
 
-LINKS USED IN THE COMPONENT
+```sh
+npm run test:unit
+```
+
+### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+
+```sh
+npm run test:e2e:dev
+```
+
+This runs the end-to-end tests against the Vite development server.
+It is much faster than the production build.
+
+But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+
+```sh
+npm run build
+npm run test:e2e
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
