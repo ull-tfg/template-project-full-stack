@@ -51,11 +51,11 @@ Done. Now run:
 ```
 #### Vuetify
 
-Once the project of the front-end has been created, [Vuetify](https://www.vuetify.com) is added. For doing this, [Vue CLI](https://cli.vuejs.org/#getting-started) must be installed:
+Once the project of the front-end has been created, [Vuetify](https://vuetifyjs.com) is added. For doing this, [Vue CLI](https://cli.vuejs.org/#getting-started) must be installed:
 ```sh
 sudo npm install -g @vue/cli
 ```
-When [Vue CLI](https://cli.vuejs.org/#getting-started) is installed, [Vuetify](https://www.vuetify.com) is added to the project:
+When [Vue CLI](https://cli.vuejs.org/#getting-started) is installed, [Vuetify](https://vuetifyjs.com) is added to the project:
 ```
 vue add vuetify
 ```

@@ -2,10 +2,9 @@
 
 <!-- TOC -->
 
-- [Full-stack project](#full-stack-project)
-  - [Description](#description)
-  - [How to use](#how-to-use)
-  - [Links](#links)
+- [Description](#description)
+- [How to use](#how-to-use)
+- [Links](#links)
 
 <!-- /TOC -->
 
