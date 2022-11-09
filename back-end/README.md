@@ -2,13 +2,12 @@
 
 <!-- TOC -->
 
-- [Back-end](#back-end)
-  - [Description](#description)
-  - [How to use](#how-to-use)
-    - [Compilation](#compilation)
-    - [Run from source code](#run-from-source-code)
-    - [Run from JAR](#run-from-jar)
-  - [Links](#links)
+- [Description](#description)
+- [How to use](#how-to-use)
+  - [Compilation](#compilation)
+  - [Run from source code](#run-from-source-code)
+  - [Run from JAR](#run-from-jar)
+- [Links](#links)
 
 <!-- /TOC -->
 

@@ -2,16 +2,18 @@
 
 <!-- TOC -->
 
-- [Project Setup](#project-setup)
-  - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
-  - [Type-Check, Compile and Minify for Production](#type-check-compile-and-minify-for-production)
-  - [Run Unit Tests with Vitest](#run-unit-tests-with-vitest)
-  - [Run End-to-End Tests with Cypress](#run-end-to-end-tests-with-cypress)
-  - [Lint with ESLint](#lint-with-eslint)
+- [Description](#description)
+- [How to use](#how-to-use)
+  - [Project Setup](#project-setup)
+    - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
+    - [Type-Check, Compile and Minify for Production](#type-check-compile-and-minify-for-production)
+    - [Run Unit Tests with Vitest](#run-unit-tests-with-vitest)
+    - [Run End-to-End Tests with Cypress](#run-end-to-end-tests-with-cypress)
+    - [Lint with ESLint](#lint-with-eslint)
 
 <!-- /TOC -->
 
-# Description
+## Description
 
 This template should help get you started developing with Vue 3 in Vite. It has been created by following the guidelines provided [here](https://vuejs.org/guide/quick-start.html#creating-a-vue-application):
 ```sh
@@ -42,9 +44,9 @@ Done. Now run:
   npm run dev
 ```
 
-# How to use
+## How to use
 
-## Project Setup
+### Project Setup
 
 ```sh
 npm install
@@ -59,7 +61,7 @@ added 571 packages, and audited 572 packages in 49s
 found 0 vulnerabilities
 ```
 
-### Compile and Hot-Reload for Development
+#### Compile and Hot-Reload for Development
 
 The Vite development server can be started by running the following commands:
 ```sh
@@ -74,19 +76,19 @@ The result must be similar to this:
 ```
 The front-end should be available by accesing to `http://localhost:5173/`.
 
-### Type-Check, Compile and Minify for Production
+#### Type-Check, Compile and Minify for Production
 
 ```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+#### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+#### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
 npm run test:e2e:dev
@@ -102,7 +104,7 @@ npm run build
 npm run test:e2e
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+#### Lint with [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
