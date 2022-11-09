@@ -3,6 +3,8 @@
 <!-- TOC -->
 
 - [Description](#description)
+  - [How has been created](#how-has-been-created)
+    - [Vuetify](#vuetify)
 - [How to use](#how-to-use)
   - [Project Setup](#project-setup)
     - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
@@ -15,7 +17,11 @@
 
 ## Description
 
-This template should help get you started developing with Vue 3 in Vite. It has been created by following the guidelines provided [here](https://vuejs.org/guide/quick-start.html#creating-a-vue-application):
+This template should help get you started developing with Vue 3 in Vite. 
+
+### How has been created 
+
+The front-end has been created by following the guidelines provided [here](https://vuejs.org/guide/quick-start.html#creating-a-vue-application):
 ```sh
 npm init vue@latest
 Need to install the following packages:
@@ -42,6 +48,51 @@ Done. Now run:
   npm install
   npm run lint
   npm run dev
+```
+#### Vuetify
+
+Once the project of the front-end has been created, [Vuetify](https://www.vuetify.com) is added. For doing this, [Vue CLI](https://cli.vuejs.org/#getting-started) must be installed:
+```sh
+sudo npm install -g @vue/cli
+```
+When [Vue CLI](https://cli.vuejs.org/#getting-started) is installed, [Vuetify](https://www.vuetify.com) is added to the project:
+```
+vue add vuetify
+```
+The result is as follows:
+```sh
+? Still proceed? Yes
+
+📦  Installing vue-cli-plugin-vuetify...
+
+
+added 11 packages, and audited 583 packages in 5s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+✔  Successfully installed plugin: vue-cli-plugin-vuetify
+
+? Choose a preset: Vuetify 3 - Vite (preview)
+? Would you like to install Vuetify 3 nightly build? (WARNING: Nightly builds are intended for development testing and may include bugs or other issues.) Yes
+
+🚀  Invoking generator for vue-cli-plugin-vuetify...
+📦  Installing additional dependencies...
+
+
+added 17 packages, and audited 600 packages in 12s
+
+121 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+⚓  Running completion hooks...
+
+✔  Successfully invoked generator for plugin: vue-cli-plugin-vuetify
+ vuetify  Discord community: https://community.vuetifyjs.com
+ vuetify  Github: https://github.com/vuetifyjs/vuetify
+ vuetify  Support Vuetify: https://github.com/sponsors/johnleider
 ```
 
 ## How to use
