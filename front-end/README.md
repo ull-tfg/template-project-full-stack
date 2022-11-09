@@ -75,7 +75,7 @@ found 0 vulnerabilities
 ✔  Successfully installed plugin: vue-cli-plugin-vuetify
 
 ? Choose a preset: Vuetify 3 - Vite (preview)
-? Would you like to install Vuetify 3 nightly build? (WARNING: Nightly builds are intended for development testing and may include bugs or other issues.) Yes
+? Would you like to install Vuetify 3 nightly build? (WARNING: Nightly builds are intended for development testing and may include bugs or other issues.) No
 
 🚀  Invoking generator for vue-cli-plugin-vuetify...
 📦  Installing additional dependencies...
