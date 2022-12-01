@@ -17,10 +17,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.trucks.adapter.rest.pagination.MyPagination;
 
-@EnableGlobalMethodSecurity(
-        jsr250Enabled = true,
-        prePostEnabled = true,
-        securedEnabled = true)
+@EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true, securedEnabled = true)
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -42,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .csrf((csrf) -> csrf.disable())
-                //.csrf().disable()
+                // .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 

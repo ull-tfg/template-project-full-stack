@@ -3,6 +3,8 @@ package com.trucks.domain;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.trucks.adapter.rest.json.JsonFields;
+
 public class Route {
 
     private String id;
@@ -80,9 +82,9 @@ public class Route {
 
     public Map<String, Object> toJson() {
         Map<String, Object> mappedResource = new HashMap<>();
-        mappedResource.put("distance", this.getDistance());
-        mappedResource.put("time", this.getTime());
-        mappedResource.put("fuelConsumption", this.getFuelConsumption());
+        mappedResource.put(JsonFields.DISTANCE, this.getDistance());
+        mappedResource.put(JsonFields.TIME, this.getTime());
+        mappedResource.put(JsonFields.FUEL_CONSUMPTION, this.getFuelConsumption());
         mappedResource.put("departureLatitude", this.getDepartureLatitude());
         mappedResource.put("departureLongitude", this.getDepartureLongitude());
         mappedResource.put("destinationLatitude", this.getDestinationLatitude());
@@ -92,9 +94,15 @@ public class Route {
 
     @Override
     public String toString() {
-        return "Route [departureLatitude=" + departureLatitude + ", departureLongitude="
-                + departureLongitude + ", destinationLatitude=" + destinationLatitude
-                + ", destinationLongitude=" + destinationLongitude + ", distance=" + distance
-                + ", fuelConsumption=" + fuelConsumption + ", id=" + id + ", time=" + time + "]";
+        return "Route=[" +
+                "id=" + this.getId() + ", " +
+                "departureLatitude=" + this.getDepartureLatitude() + ", " +
+                "departureLongitude=" + this.getDepartureLongitude() + ", " +
+                "destinationLatitude=" + this.getDestinationLatitude() + ", " +
+                "destinationLongitude=" + this.getDestinationLongitude() + ", " +
+                "distance=" + this.getDistance() + ", " +
+                "fuelConsumption=" + this.getFuelConsumption() + ", " +
+                "time=" + this.getTime() +
+                "]";
     }
 }

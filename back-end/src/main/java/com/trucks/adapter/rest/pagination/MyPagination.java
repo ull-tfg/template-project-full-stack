@@ -6,18 +6,18 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.data.domain.Page;
 
 public class MyPagination {
-    
+
     public static String HEADER_PAGINATION_COUNT = "Pagination-Count";
     public static String HEADER_PAGINATION_SIZE = "Pagination-Size";
     public static String HEADER_PAGINATION_PAGE = "Pagination-Page";
     public static String HEADER_TOTAL_COUNT = "Total-Count";
 
     public static List<String> getExposedHeaders() {
-        return Arrays.asList(new String[]{
-            HEADER_PAGINATION_COUNT,
-            HEADER_PAGINATION_SIZE,
-            HEADER_PAGINATION_PAGE,
-            HEADER_TOTAL_COUNT
+        return Arrays.asList(new String[] {
+                HEADER_PAGINATION_COUNT,
+                HEADER_PAGINATION_SIZE,
+                HEADER_PAGINATION_PAGE,
+                HEADER_TOTAL_COUNT
         });
     }
 

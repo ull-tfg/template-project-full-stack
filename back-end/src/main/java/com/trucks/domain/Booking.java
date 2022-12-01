@@ -37,16 +37,6 @@ public class Booking {
         this.arrivalTime = arrivalTime;
     }
 
-    public Map<String, Object> toJson() {
-        Map<String, Object> mappedResource = new HashMap<>();
-        mappedResource.put(JsonFields.ID, this.getId());
-        mappedResource.put(JsonFields.DRIVER, this.getDriver());
-        mappedResource.put(JsonFields.PORT, this.getPort());
-        mappedResource.put(JsonFields.ARRIVALTIME, this.getArrivalTime());
-        mappedResource.put(JsonFields.WAITINGAREA, this.getWaitingArea());
-        return mappedResource;
-    }
-
     public UUID getId() {
         return id;
     }
@@ -63,9 +53,24 @@ public class Booking {
         this.waitingArea = waitingArea;
     }
 
+    public Map<String, Object> toJson() {
+        Map<String, Object> mappedResource = new HashMap<>();
+        mappedResource.put(JsonFields.ID, this.getId());
+        mappedResource.put(JsonFields.DRIVER, this.getDriver());
+        mappedResource.put(JsonFields.PORT, this.getPort());
+        mappedResource.put(JsonFields.ARRIVALTIME, this.getArrivalTime());
+        mappedResource.put(JsonFields.WAITING_AREA, this.getWaitingArea());
+        return mappedResource;
+    }
+
     @Override
     public String toString() {
-        return "Booking [arrivalTime=" + arrivalTime + ", driver=" + driver + ", id=" + id
-                + ", port=" + port + ", waitingArea=" + waitingArea + "]";
+        return "Booking=[" +
+                "id=" + this.getId() + ", " +
+                "port=" + this.getPort() + ", " +
+                "driver=" + this.getDriver() + ", " +
+                "arrivalTime=" + this.getArrivalTime() + ", " +
+                "waitingArea=" + this.getWaitingArea() +
+                "]";
     }
 }

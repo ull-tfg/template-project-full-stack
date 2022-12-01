@@ -1,3 +1,9 @@
 {
-    "markdown.extension.toc.levels": "2..6",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "[java]": {
+        "editor.detectIndentation": false
+    },
+    /* Markdown All in One */
+    "markdown.extension.toc.levels": "2..6"
 }

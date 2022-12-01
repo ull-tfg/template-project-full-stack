@@ -5,6 +5,10 @@ import java.util.Map;
 import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 
+import com.trucks.adapter.rest.json.JsonFields;
+
+import springfox.documentation.spring.web.json.Json;
+
 public class Port {
 
     private String id;
@@ -44,17 +48,7 @@ public class Port {
         this.longitude = longitude;
     }
 
-    public Map<String, Object> toJson() {
-        Map<String, Object> mappedResource = new HashMap<>();
-        mappedResource.put("id", this.getId());
-        mappedResource.put("name", this.getName());
-        mappedResource.put("latitude", this.getLatitude());
-        mappedResource.put("longitude", this.getLongitude());
-        return mappedResource;
-    }
-
     public static Port random() {
-        Random r = new Random();
         Port port = new Port();
         port.setId(RandomStringUtils.randomAlphabetic(10));
         port.setName(RandomStringUtils.randomAlphabetic(10));
@@ -63,5 +57,24 @@ public class Port {
         port.setLatitude(latitude);
         port.setLongitude(longitude);
         return port;
+    }
+
+    public Map<String, Object> toJson() {
+        Map<String, Object> mappedResource = new HashMap<>();
+        mappedResource.put(JsonFields.ID, this.getId());
+        mappedResource.put(JsonFields.NAME, this.getName());
+        mappedResource.put(JsonFields.LATITUDE, this.getLatitude());
+        mappedResource.put(JsonFields.LONGITUDE, this.getLongitude());
+        return mappedResource;
+    }
+
+    @Override
+    public String toString() {
+        return "Port=[" +
+                "id=" + this.getId() + ", " +
+                "name=" + this.getName() + ", " +
+                "latitude=" + this.getLatitude() + ", " +
+                "longitue=" + this.getLongitude() +
+                "]";
     }
 }

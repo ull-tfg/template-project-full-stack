@@ -19,16 +19,10 @@ public class PortsUtils {
     }
 
     public static boolean isValidDescription(String string) {
-        return Pattern
-                .compile("^[a-zA-Z-\\d\\s\\.]*$")
-                .matcher(string)
-                .matches();
+        return Pattern.compile("^[a-zA-Z-\\d\\s\\.]*$").matcher(string).matches();
     }
 
     public static boolean isValidName(String string) {
-        return Pattern
-                .compile("^[a-zA-Z-\\d\\s\\.]*$")
-                .matcher(string)
-                .matches();
+        return Pattern.compile("^[a-zA-Z-\\d\\s\\.]*$").matcher(string).matches();
     }
 }
