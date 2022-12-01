@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.trucks.application.port.BookingService;
+import com.trucks.application.service.BookingService;
 import com.trucks.domain.Booking;
 import es.ull.utils.rest.exception.UllBadRequestException;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-@RequestMapping(
-    value = RestApiConfiguration.API_VERSION + BookingHandler.ENDPOINT, 
-    produces = MediaType.APPLICATION_JSON_VALUE
-)
+@RequestMapping(value = RestApiConfiguration.API_VERSION + BookingHandler.ENDPOINT, produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class BookingHandler {
 
@@ -47,7 +44,7 @@ public class BookingHandler {
     public ResponseEntity<?> getId(@PathVariable String id) {
         logger.info("GET " + ENDPOINT + "/");
         logger.info("\tid: " + id);
-        Optional<Booking> port = this.bookingService.find(id);
+        Optional<Booking> port = this.bookingService.findById(id);
         if (port.isPresent()) {
             Booking booking = port.get();
             return ResponseEntity.ok().body(booking.toJson());
@@ -61,7 +58,7 @@ public class BookingHandler {
     public ResponseEntity<?> post(@RequestBody Booking booking) {
         logger.info("POST " + ENDPOINT + "/");
         logger.info("\tbooking: " + booking);
-        this.bookingService.save(booking);
+        this.bookingService.savePort(booking);
         return new ResponseEntity(booking.toJson(), HttpStatus.CREATED);
     }
 }
