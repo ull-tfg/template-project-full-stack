@@ -10,7 +10,9 @@
 
 ## Description
 
-DESCRIPTION OF PROJECT
+This GitHub repository contains a template for a full-stack project, featuring a back-end built with Spring and MongoDB, and a front-end based on Vue.js 3, Vite and Vuetify. 
+
+It serves as a starting point for advanced projects, providing a solid foundation for developers to build upon and customize to their needs. The combination of Spring and MongoDB provides a robust and scalable back-end, while the use of Vue.js 3, Vite, and Vuetify delivers a modern and user-friendly front-end experience. This repository is ideal for developers who want to quickly get started on complex projects without having to worry about setting up the initial infrastructure.
 
 ## How to use
 
