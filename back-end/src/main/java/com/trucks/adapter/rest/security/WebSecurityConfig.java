@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setExposedHeaders(MyPagination.getExposedHeaders());
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-        logger.info("CORS configured correctly");
+        logger.info("CORS configured correctly"); 
         return source;
     }
 }
