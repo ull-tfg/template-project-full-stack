@@ -2,12 +2,9 @@ package com.trucks.domain;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import com.trucks.adapter.rest.json.JsonFields;
-
-import springfox.documentation.spring.web.json.Json;
 
 public class Port {
 
@@ -46,17 +43,6 @@ public class Port {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
-
-    public static Port random() {
-        Port port = new Port();
-        port.setId(RandomStringUtils.randomAlphabetic(10));
-        port.setName(RandomStringUtils.randomAlphabetic(10));
-        double latitude = Math.random() * (90 - (-90));
-        double longitude = Math.random() * (180 - (-180));
-        port.setLatitude(latitude);
-        port.setLongitude(longitude);
-        return port;
     }
 
     public Map<String, Object> toJson() {

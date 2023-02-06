@@ -19,9 +19,7 @@ public class PortService {
     private PortRepository repository;
 
     public void delete(Port resource) {
-        logger.info(
-                "delete=[resource={}]",
-                resource);
+        logger.info("delete=[resource={}]", resource);
         this.repository.delete(resource);
     }
 
@@ -31,37 +29,27 @@ public class PortService {
     }
 
     public Optional<Port> findById(String id) {
-        logger.info(
-                "findById=[id={}]",
-                id);
+        logger.info("findById=[id={}]", id);
         return this.repository.findById(id);
     }
 
     public Optional<Port> findByName(String name) {
-        logger.info(
-                "findByName=[name={}]",
-                name);
+        logger.info("findByName=[name={}]", name);
         return this.repository.findByName(name);
     }
 
     public void savePort(Port resource) {
-        logger.info(
-                "savePort=[resource={}]",
-                resource);
+        logger.info("savePort=[resource={}]", resource);
         this.repository.save(resource);
     }
 
     public Page<Port> getPage(Pageable pageable) {
-        logger.info(
-                "getPage=[pageable={}]",
-                pageable);
+        logger.info("getPage=[pageable={}]", pageable);
         return this.repository.findAll(pageable);
     }
 
     public void updatePort(Port previousPort, Port newPort) {
-        logger.info(
-                "updatePort=[previousPort={},newPort={}]",
-                previousPort, newPort);
+        logger.info("updatePort=[previousPort={},newPort={}]", previousPort, newPort);
         previousPort.setName(newPort.getName());
         this.savePort(previousPort);
     }

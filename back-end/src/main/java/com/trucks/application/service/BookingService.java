@@ -18,9 +18,7 @@ public class BookingService {
     private BookingRepository repository;
 
     public void delete(Booking resource) {
-        logger.info(
-                "delete=[resource={}]",
-                resource);
+        logger.info("delete=[resource={}]", resource);
         this.repository.delete(resource);
     }
 
@@ -30,37 +28,27 @@ public class BookingService {
     }
 
     public Optional<Booking> findById(String id) {
-        logger.info(
-                "findById=[id={}]",
-                id);
+        logger.info("findById=[id={}]", id);
         return this.repository.findById(id);
     }
 
     public Optional<Booking> findByName(String name) {
-        logger.info(
-                "findByName=[name={}]",
-                name);
+        logger.info("findByName=[name={}]", name);
         return this.repository.findByName(name);
     }
 
     public void savePort(Booking resource) {
-        logger.info(
-                "savePort=[resource={}]",
-                resource);
+        logger.info("savePort=[resource={}]", resource);
         this.repository.save(resource);
     }
 
     public Page<Booking> getPage(Pageable pageable) {
-        logger.info(
-                "getPage=[pageable={}]",
-                pageable);
+        logger.info("getPage=[pageable={}]", pageable);
         return this.repository.findAll(pageable);
     }
 
     public void updatePort(Booking previousBooking, Booking newBooking) {
-        logger.info(
-                "updatePort=[previousBooking={},newPort={}]",
-                previousBooking, newBooking);
+        logger.info("updatePort=[previousBooking={},newPort={}]", previousBooking, newBooking);
         // previousBooking.setName(newBooking.getName());
         this.savePort(previousBooking);
     }

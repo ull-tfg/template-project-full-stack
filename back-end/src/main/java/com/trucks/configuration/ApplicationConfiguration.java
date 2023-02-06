@@ -11,7 +11,7 @@ import com.trucks.application.service.BookingService;
 import com.trucks.application.service.PortService;
 
 @Configuration
-public class BeanConfiguration {
+public class ApplicationConfiguration {
 
     @Bean
     public BookingRepository bookingRepository() {

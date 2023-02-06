@@ -21,29 +21,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-@RequestMapping(value = RestApiConfiguration.API_VERSION + BookingHandler.ENDPOINT, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = RestApiConfiguration.API_VERSION + BookingHandler.ENDPOINT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class BookingHandler {
 
-    public static final String ENDPOINT = "/bookings";
     private static final Logger logger = LoggerFactory.getLogger(BookingHandler.class);
+    public static final String ENDPOINT = "/bookings";
     private BookingService bookingService;
 
     public BookingHandler(BookingService service) {
-        logger.info("CONSTRUCTOR " + ENDPOINT + "/");
         this.bookingService = service;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> get() {
-        logger.info("GET " + ENDPOINT + "/");
+        logger.info("GET '{}'", ENDPOINT);
         return ResponseEntity.ok().body(this.bookingService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getId(@PathVariable String id) {
-        logger.info("GET " + ENDPOINT + "/");
-        logger.info("\tid: " + id);
+        logger.info("GET '{}/{}'", ENDPOINT, id);
+        logger.info("Path variables=[id='{}']", id);
         Optional<Booking> port = this.bookingService.findById(id);
         if (port.isPresent()) {
             Booking booking = port.get();
@@ -56,8 +56,8 @@ public class BookingHandler {
 
     @PostMapping
     public ResponseEntity<?> post(@RequestBody Booking booking) {
-        logger.info("POST " + ENDPOINT + "/");
-        logger.info("\tbooking: " + booking);
+        logger.info("POST '{}'", ENDPOINT);
+        logger.info("Body=[booking={}]'", booking);
         this.bookingService.savePort(booking);
         return new ResponseEntity(booking.toJson(), HttpStatus.CREATED);
     }

@@ -23,31 +23,31 @@ import es.ull.utils.rest.exception.UllBadRequestException;
 import es.ull.utils.rest.exception.UllNotFoundException;
 
 @CrossOrigin(origins = "*")
-@RequestMapping(value = RestApiConfiguration.API_VERSION + PortHandler.ENDPOINT, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = RestApiConfiguration.API_VERSION + PortHandler.ENDPOINT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class PortHandler {
 
-    public static final String ENDPOINT = "/ports";
     private static final Logger logger = LoggerFactory.getLogger(PortHandler.class);
+    public static final String ENDPOINT = "/ports";
     private PortService portService;
 
     public PortHandler(PortService service) {
-        logger.info("CONSTRUCTOR " + ENDPOINT + "/");
         this.portService = service;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> get() {
-        logger.info("GET " + ENDPOINT + "/");
+        logger.info("GET '{}'", ENDPOINT);
         return ResponseEntity.ok().body(this.portService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getId(@PathVariable String id,
             @RequestParam(required = false) String arrivalTime) {
-        logger.info("GET " + ENDPOINT + "/");
-        logger.info("\tid: " + id);
-        logger.info("\tarrivalTime=" + arrivalTime);
+        logger.info("GET '{}/{}'", ENDPOINT, id);
+        logger.info("Path variables=[id='{}']", id);
+        logger.info("Request params=[arrivalTime='{}']", arrivalTime);
         Optional<Port> port = this.portService.findById(id);
         if (port.isPresent()) {
             if (arrivalTime != null) {
