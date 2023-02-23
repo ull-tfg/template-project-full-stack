@@ -32,11 +32,11 @@ The front-end can be used as Docker container or by means of the existing script
 
 The Docker image can be created as follows:
 ```sh
-docker build -t ull-tfg/my-front-end .
+docker build -t ullsoftware/front-end .
 ```
 Once the Docker image has been created, a container can be created as follows:
 ```sh
-docker run -it -p 8080:80 --rm --name my-front-end ull-tfg/my-front-end
+docker run -it -p 8080:80 --rm --name front-end ullsoftware/front-end
 ```
 
 ### Scripts
