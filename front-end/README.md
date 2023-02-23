@@ -4,13 +4,15 @@
 
 - [Description](#description)
 - [How to use](#how-to-use)
-  - [Installation](#installation)
-  - [Compiles and minifies for production](#compiles-and-minifies-for-production)
-  - [Test](#test)
-  - [Lints and fixes files](#lints-and-fixes-files)
-  - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
-  - [Preview](#preview)
-  - [Customize configuration](#customize-configuration)
+  - [Docker](#docker)
+  - [Scripts](#scripts)
+    - [Installation](#installation)
+    - [Compiles and minifies for production](#compiles-and-minifies-for-production)
+    - [Test](#test)
+    - [Lints and fixes files](#lints-and-fixes-files)
+    - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
+    - [Preview](#preview)
+    - [Customize configuration](#customize-configuration)
 
 <!-- /TOC -->
 
@@ -24,6 +26,21 @@ Overall, the [Vue.js](https://vuejs.org), [Vite](https://vitejs.dev) and [Vuetif
 
 ## How to use
 
+The front-end can be used as Docker container or by means of the existing scripts. These alternatives are described in the following sections.
+
+### Docker
+
+The Docker image can be created as follows:
+```sh
+docker build -t ull-tfg/my-front-end .
+```
+Once the Docker image has been created, a container can be created as follows:
+```sh
+docker run -it -p 8080:80 --rm --name my-front-end ull-tfg/my-front-end
+```
+
+### Scripts
+
 The front-end has the following scripts:
 Script | Description
 ------ | -----------
@@ -33,7 +50,7 @@ Script | Description
 `dev` | This script will start a development server using `vite`. Is is described in section [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development).
 `preview` | This script will start a server to preview the production build of the project using `vite`. Is is described in section [Preview](#preview).
 
-### Installation
+#### Installation
 
 ```sh
 # yarn
@@ -56,7 +73,7 @@ Done in 4.59s.
 ```
 The dependencies are installed in the folder `node_modules`.
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 
 ```sh
 # yarn
@@ -93,7 +110,7 @@ Done in 10.22s.
 ```
 The front-end should be available in `dist/`.
 
-### Test
+#### Test
 
 ```sh
 # yarn
@@ -114,7 +131,7 @@ Ran all test suites.
 Done in 0.83s.
 ```
 
-### Lints and fixes files
+#### Lints and fixes files
 
 ```sh
 # yarn
@@ -133,7 +150,7 @@ $ eslint . --fix --ignore-path .gitignore
 Done in 8.09s.
 ```
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 
 ```sh
 # yarn
@@ -154,7 +171,7 @@ The result must be as follows:
 ```
 The front-end should be available by accesing to `http://localhost:3000/`.
 
-### Preview
+#### Preview
 ```sh
 # yarn
 yarn preview
@@ -168,6 +185,6 @@ $ vite preview
 ```
 The front-end should be available by accesing to `http://localhost:4173/`.
 
-### Customize configuration
+#### Customize configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
