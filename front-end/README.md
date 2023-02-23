@@ -16,7 +16,11 @@
 
 ## Description
 
-This template should help get you started developing with Vue 3 in Vite. [Vuetify](https://vuetifyjs.com) is used as UI Component Framework.
+The front-end template developed in [Vue.js 3](https://vuejs.org), [Vite](https://vitejs.dev) and [Vuetify](https://vuetifyjs.com) is a sleek and modern design that incorporates the latest features and functionalities of these frameworks. The template provides a clean and intuitive user interface that is optimized for both desktop and mobile devices.
+
+The template is built using [Vite](https://vitejs.dev), a build tool that offers lightning-fast build times and hot module replacement, allowing you to make changes to your code and see the results immediately. [Vuetify](https://vuetifyjs.com), a material design component framework for [Vue.js](https://vuejs.org), is also used to provide a consistent and visually appealing design across all components.
+
+Overall, the [Vue.js](https://vuejs.org), [Vite](https://vitejs.dev) and [Vuetify](https://vuetifyjs.com) front-end template is a powerful and flexible tool that can be used to create beautiful and functional user interfaces with ease.
 
 ## How to use
 
