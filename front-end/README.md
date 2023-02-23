@@ -3,160 +3,167 @@
 <!-- TOC -->
 
 - [Description](#description)
-  - [How has been created](#how-has-been-created)
-    - [Vuetify](#vuetify)
 - [How to use](#how-to-use)
-  - [Project Setup](#project-setup)
-    - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
-    - [Type-Check, Compile and Minify for Production](#type-check-compile-and-minify-for-production)
-    - [Run Unit Tests with Vitest](#run-unit-tests-with-vitest)
-    - [Run End-to-End Tests with Cypress](#run-end-to-end-tests-with-cypress)
-    - [Lint with ESLint](#lint-with-eslint)
+  - [Installation](#installation)
+  - [Compiles and minifies for production](#compiles-and-minifies-for-production)
+  - [Test](#test)
+  - [Lints and fixes files](#lints-and-fixes-files)
+  - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
+  - [Preview](#preview)
+  - [Customize configuration](#customize-configuration)
 
 <!-- /TOC -->
 
 ## Description
 
-This template should help get you started developing with Vue 3 in Vite. 
-
-### How has been created 
-
-The front-end has been created by following the guidelines provided [here](https://vuejs.org/guide/quick-start.html#creating-a-vue-application):
-```sh
-npm init vue@latest
-Need to install the following packages:
-  create-vue@3.4.0
-Ok to proceed? (y) 
-
-Vue.js - The Progressive JavaScript Framework
-
-✔ Project name: … front-end
-✔ Add TypeScript? … No / Yes
-✔ Add JSX Support? … No / Yes
-✔ Add Vue Router for Single Page Application development? … No / Yes
-✔ Add Pinia for state management? … No / Yes
-✔ Add Vitest for Unit Testing? … No / Yes
-✔ Add an End-to-End Testing Solution? › Cypress
-✔ Add ESLint for code quality? … No / Yes
-✔ Add Prettier for code formatting? … No / Yes
-
-Scaffolding project in /ull-tfg/template-project-full-stack/front-end...
-
-Done. Now run:
-
-  cd front-end
-  npm install
-  npm run lint
-  npm run dev
-```
-#### Vuetify
-
-Once the project of the front-end has been created, [Vuetify](https://vuetifyjs.com) is added. For doing this, [Vue CLI](https://cli.vuejs.org/#getting-started) must be installed:
-```sh
-sudo npm install -g @vue/cli
-```
-When [Vue CLI](https://cli.vuejs.org/#getting-started) is installed, [Vuetify](https://vuetifyjs.com) is added to the project:
-```
-vue add vuetify
-```
-The result is as follows:
-```sh
-? Still proceed? Yes
-
-📦  Installing vue-cli-plugin-vuetify...
-
-
-added 11 packages, and audited 583 packages in 5s
-
-117 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-✔  Successfully installed plugin: vue-cli-plugin-vuetify
-
-? Choose a preset: Vuetify 3 - Vite (preview)
-? Would you like to install Vuetify 3 nightly build? (WARNING: Nightly builds are intended for development testing and may include bugs or other issues.) No
-
-🚀  Invoking generator for vue-cli-plugin-vuetify...
-📦  Installing additional dependencies...
-
-
-added 17 packages, and audited 600 packages in 12s
-
-121 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-⚓  Running completion hooks...
-
-✔  Successfully invoked generator for plugin: vue-cli-plugin-vuetify
- vuetify  Discord community: https://community.vuetifyjs.com
- vuetify  Github: https://github.com/vuetifyjs/vuetify
- vuetify  Support Vuetify: https://github.com/sponsors/johnleider
-```
+This template should help get you started developing with Vue 3 in Vite. [Vuetify](https://vuetifyjs.com) is used as UI Component Framework.
 
 ## How to use
 
-### Project Setup
+The front-end has the following scripts:
+Script | Description
+------ | -----------
+`build` | This script will first run `vue-tsc` to check the TypeScript code for errors but won't emit any compiled code. After that, it will use `vite` to build the project for production. It is described in section [Compiles and minifies for production](#compiles-and-minifies-for-production).
+`test` | This script will run the test suite using `jest`. It is described in section [Test](#test).
+`lint` | This script will run `eslint` to check the code for errors and fix any that can be automatically corrected. It will also ignore files specified in `.gitignore`. It is described in section [Lints and fixes files](#lints-and-fixes-files).
+`dev` | This script will start a development server using `vite`. Is is described in section [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development).
+`preview` | This script will start a server to preview the production build of the project using `vite`. Is is described in section [Preview](#preview).
+
+### Installation
 
 ```sh
+# yarn
+yarn
+
+# npm
 npm install
+
+# pnpm
+pnpm install
 ```
-The results must be similar to this:
+The result must be as follows:
 ```sh
-added 571 packages, and audited 572 packages in 49s
+yarn install v1.22.19
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+Done in 4.59s.
+```
+The dependencies are installed in the folder `node_modules`.
 
-115 packages are looking for funding
-  run `npm fund` for details
+### Compiles and minifies for production
 
-found 0 vulnerabilities
+```sh
+# yarn
+yarn build
+
+# npm
+npm run build
+
+# pnpm
+pnpm build
+```
+The result must be as follows:
+```sh
+yarn run v1.22.19
+$ vue-tsc --noEmit && vite build
+vite v3.2.5 building for production...
+✓ 196 modules transformed.
+dist/assets/logo.3f834fa8.svg                            0.51 KiB
+dist/assets/materialdesignicons-webfont.861aea05.eot     1214.57 KiB
+dist/assets/materialdesignicons-webfont.e52d60f6.woff2   376.33 KiB
+dist/assets/materialdesignicons-webfont.48d3eec6.woff    548.61 KiB
+dist/assets/materialdesignicons-webfont.bd725a7a.ttf     1214.36 KiB
+dist/index.html                                          0.41 KiB
+dist/assets/Default.de584bbb.js                          12.22 KiB / gzip: 4.44 KiB
+dist/assets/VIcon.34fea5a6.js                            9.12 KiB / gzip: 3.43 KiB
+dist/assets/Default.2f8c2b45.css                         3.80 KiB / gzip: 1.04 KiB
+dist/assets/VIcon.80009757.css                           1.50 KiB / gzip: 0.60 KiB
+dist/assets/webfontloader.b777d690.js                    12.42 KiB / gzip: 4.98 KiB
+dist/assets/Home.ea3d4649.js                             21.67 KiB / gzip: 7.57 KiB
+dist/assets/Home.55d9a549.css                            30.94 KiB / gzip: 4.44 KiB
+dist/assets/index.7b3550bf.js                            106.35 KiB / gzip: 41.89 KiB
+dist/assets/index.821b1894.css                           533.95 KiB / gzip: 76.03 KiB
+Done in 10.22s.
+```
+The front-end should be available in `dist/`.
+
+### Test
+
+```sh
+# yarn
+yarn test
+```
+The result must be as follows:
+```sh
+yarn run v1.22.19
+$ jest
+ PASS  src/sum.test.js
+  ✓ adds 1 + 2 to equal 3 (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.267 s, estimated 1 s
+Ran all test suites.
+Done in 0.83s.
 ```
 
-#### Compile and Hot-Reload for Development
+### Lints and fixes files
 
-The Vite development server can be started by running the following commands:
 ```sh
+# yarn
+yarn lint
+
+# npm
+npm run lint
+
+# pnpm
+pnpm lint
+```
+The result must be as follows:
+```sh
+yarn run v1.22.19
+$ eslint . --fix --ignore-path .gitignore
+Done in 8.09s.
+```
+
+### Compiles and hot-reloads for development
+
+```sh
+# yarn
+yarn dev
+
+# npm
 npm run dev
-```
-The result must be similar to this:
-```sh
-  VITE v3.2.3  ready in 506 ms
 
-  ➜  Local:   http://localhost:5173/
+# pnpm
+pnpm dev
+```
+The result must be as follows:
+```sh
+  VITE v3.2.5  ready in 334 ms
+
+  ➜  Local:   http://localhost:3000/
   ➜  Network: use --host to expose
 ```
-The front-end should be available by accesing to `http://localhost:5173/`.
+The front-end should be available by accesing to `http://localhost:3000/`.
 
-#### Type-Check, Compile and Minify for Production
-
+### Preview
 ```sh
-npm run build
+# yarn
+yarn preview
 ```
-
-#### Run Unit Tests with [Vitest](https://vitest.dev/)
-
+The result must be as follows:
 ```sh
-npm run test:unit
+yarn run v1.22.19
+$ vite preview
+  ➜  Local:   http://localhost:4173/
+  ➜  Network: use --host to expose
 ```
+The front-end should be available by accesing to `http://localhost:4173/`.
 
-#### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+### Customize configuration
 
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-#### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+See [Configuration Reference](https://vitejs.dev/config/).
